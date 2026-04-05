@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+
+% \usepackage{}
+\usepackage[a4paper, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsfonts}   % or \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+
+\setstretch{1.1}
+
+\title{}
+\author{Ivan Mikhailov}
+
+% Macroses
+\newcommand{\hwdate}{April 6, 2026}
+\newcommand{\rthree}{$\mathbb{R}^3$}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{flushleft}           
+    University of Primorska \\
+    FAMNIT
+\end{flushleft}
+
+\vspace*{0.2\textheight} 
+
+\begin{center}
+    {\LARGE Chapter 2: Lines and Planes in \rthree\  — Summary}\\[1cm]
+    {\large Ivan Mikhailov}\\[0.25cm]
+    {\large Mathematical Practicum \uppercase\expandafter{\romannumeral 1}}
+\end{center}
+
+\vfill
+
+% \maketitle                       % renders title, author, date
+
+\begin{flushleft}
+    \hwdate
+\end{flushleft}
+
+% ======================= %
+\newpage
+% ======================= %
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section*{Abstract}
+This summary presents the core concepts of lines and planes in \rthree.
+Lines are described using a point and a direction vector, while planes are defined by a point and a normal vector, each with multiple equivalent representations.
+It covers intersections, distances, and angles between lines, planes, and points, providing key formulas for practical computations.
+The summary consolidates essential vector-based techniques for analyzing spatial relationships in three-dimensional space.
+
+% ======================= %
+\newpage
+% ======================= %
+
+\tableofcontents
+\vspace{1cm}
+\listoftables
+\vspace{1cm}
+\listoffigures
+
+% ======================= %
+\newpage
+% ======================= %
+
+\section{Lines in \rthree}
+A line in space is determined by a \textbf{point} $P_0(x_0, y_0, z_0)$ 
+and a \textbf{direction vector} $v = (v_1, v_2, v_3)$.
+
+\subsection{Three equivalent forms}
+\subsubsection{Vector form}
+\[
+r_1 = r_0 + \lambda v, \quad \lambda \in \mathbb{R}
+\]
+
+\subsubsection{Parametric form}
+
+\[
+\begin{cases}
+x = x_0 + \lambda v_1 \\
+y = y_0 + \lambda v_2 \\
+z = z_0 + \lambda v_3
+\end{cases}
+\]
+
+\subsubsection{Canonical form}
+\[
+\frac{x - x_0}{v_1} = \frac{y - y_0}{v_2} = \frac{z - z_0}{v_3} = \lambda
+\]
+Requires all $v_i \neq 0$.
+
+\vspace{\baselineskip}
+
+The representation is not unique — \textit{any} point on the line can serve as the base point, and any nonzero scalar multiple of $v$ gives the same line.
+
+% ======================= %
+\newpage
+% ======================= %
+
+\section{Planes in \rthree}
+A plane is determined by a \textbf{point} $R_0(x_0, y_0, z_0)$ and a \textbf{normal vector} $n = (a, b, c)$ perpendicular to the plane.
+
+\subsection{Three equivalent forms}
+
+\subsubsection{Vector form}
+\[
+\langle n, r - r_0 \rangle = 0
+\]
+
+\subsubsection{General form}
+\[
+ax + by + cz = d, \quad \text{where } d = ax_0 + by_0 + cz_0
+\]
+
+\subsubsection{Vector parametric description}
+\[
+r_0 + \lambda u + \mu v, \quad \lambda, \mu \in \mathbb{R}
+\]
+where $u, v$ are two linearly independent vectors lying in the plane.
+
+\vspace{\baselineskip}
+
+To convert parametric $\rightarrow$ general: find 
+$n = u \times v$ (the cross product of the two direction vectors), then substitute the support point to get $d$.
+
+\vspace{\baselineskip}
+
+Three noncollinear points $A, B, C$ also determine a plane via:
+\[
+\begin{vmatrix}
+x - x_0 & y - y_0 & z - z_0 \\
+x_1 - x_0 & y_1 - y_0 & z_1 - z_0 \\
+x_2 - x_0 & y_2 - y_0 & z_2 - z_0
+\end{vmatrix} = 0
+\]
+
+% ======================= %
+\newpage
+% ======================= %
+
+\section{Intersections}
+
+\subsection{Two lines}
+
+Lines $\ell_1 = r_1 + \lambda_1 v_1$ and 
+$\ell_2 = r_2 + \lambda_2 v_2$ intersect iff there exist 
+$\lambda_1, \lambda_2$ such that:
+\[
+r_1 + \lambda_1 v_1 = r_2 + \lambda_2 v_2
+\]
+This gives a system of 3 equations; check consistency in all three coordinates.
+
+\subsection{Line and plane}
+
+Substitute the parametric line $\ell = r_0 + \lambda v$ into the plane equation 
+$ax + by + cz = d$ and solve for $\lambda$. Then substitute back to get the intersection point.  
+
+\begin{itemize}
+\item If the equation has no solution → line is parallel to plane (no intersection).
+\item If all $\lambda \in \mathbb{R}$ satisfy it → line lies in the plane.
+\end{itemize}
+
+\subsection{Two planes}
+
+Two non-parallel planes intersect in a \textbf{line}. Solve the system of two plane equations, express two unknowns in terms of the third (assign it parameter $\lambda$), and write the result in vector form.
+
+% ======================= %
+\newpage
+% ======================= %
+
+\section{Distances}
+
+\subsection{Point to line}
+
+Let $R_1$ be the point, $\ell = r_0 + \lambda v$ the line:
+\[
+\Delta = \frac{|(R_1 - r_0) \times v|}{|v|}
+\]
+
+\subsection{Point to plane}
+
+Let $R_1$ be the point, $\Pi$ a plane with normal $n$, and $R_0$ any point on $\Pi$:
+\[
+\Delta = \frac{|\langle R_1 - R_0, n \rangle|}{|n|}
+\]
+
+\subsection{Two parallel lines}
+
+Check parallelism: $v_1 \times v_2 = 0$ (equivalently, $v_1$ and $v_2$ are linearly dependent).  
+Distance = distance from any point on $\ell_1$ to $\ell_2$ (use the point-to-line formula).
+
+\subsection{Two skew lines}
+
+Lines that are not parallel and do not intersect. Formula:
+\[
+\Delta = \frac{|\langle v_1 \times v_2, r_2 - r_1 \rangle|}{|v_1 \times v_2|}
+\]
+
+\subsection{Line and parallel plane}
+
+First verify parallelism: $\langle n, v \rangle = 0$.  
+Distance = distance from any point on the line to the plane (use the point-to-plane formula).
+
+\subsection{Two parallel planes}
+
+First verify: $n_1 = \alpha n_2$ for some scalar $\alpha$.  
+Distance = distance from any point on one plane to the other plane.
+
+% ======================= %
+\newpage
+% ======================= %
+
+\section{Angles}
+
+\subsection{Between two lines}
+
+The angle $\phi$ is always taken as \textbf{acute}:
+\[
+\cos \phi = \frac{|\langle v_1, v_2 \rangle|}{|v_1| \cdot |v_2|}
+\]
+
+\subsection{Between a line and a plane}
+
+The angle $\phi$ is between the line and its projection onto the plane:
+\[
+\sin \phi = \frac{|\langle v, n \rangle|}{|v| \cdot |n|}
+\]
+where $n$ is the normal to the plane. Equivalently: $\phi = 90^\circ - \beta$, where $\beta$ is the angle between $v$ and $n$.
+
+\subsection{Between two planes}
+
+The angle equals the angle between the normal vectors:
+\[
+\cos \phi = \frac{|\langle n_1, n_2 \rangle|}{|n_1| \cdot |n_2|}
+\]
+Two planes are \textbf{orthogonal} iff $\langle n_1, n_2 \rangle = 0$.
+
+\end{document}
