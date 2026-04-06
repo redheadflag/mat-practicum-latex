@@ -1,13 +1,11 @@
 \documentclass[11pt]{article}
 
 \usepackage[a4paper, left=2.5cm, right=2.5cm]{geometry}
-\usepackage{amsfonts}   % or \usepackage{amssymb}
-\usepackage{amsmath}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{setspace}
-\usepackage{enumitem}
-\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
 \usepackage{float}
-\usepackage{url}
+\usepackage[colorlinks,linkcolor=red,citecolor=green,urlcolor=blue,hypertexnames=true]{hyperref}
 \usepackage{graphicx}
 
 \setstretch{1.1}
@@ -26,9 +24,10 @@
 
 \renewcommand{\qedsymbol}{$\spadesuit$}
 
-% Macroses
+% Macros
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\hwdate}{April 6, 2026}
-\newcommand{\rthree}{$\mathbb{R}^3$}
+\newcommand{\rthree}{$\R^3$}
 \newcommand{\ip}[2]{\langle #1,\, #2 \rangle}
 
 \begin{document}
@@ -62,12 +61,13 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\section*{Abstract}
+\begin{abstract}
 This summary presents the core concepts of lines and planes in \rthree.
 Lines are described using a point and a direction vector, while planes are defined by a point and a normal vector, each with multiple equivalent representations.
 It covers intersections, distances, and angles between lines, planes, and points, providing key formulas for practical computations.
 The summary consolidates essential vector-based techniques for analyzing spatial relationships in three-dimensional space.
 The material follows \cite{protter} and \cite{algebra1}.
+\end{abstract}
 
 % ======================= %
 \newpage
@@ -83,7 +83,7 @@ The material follows \cite{protter} and \cite{algebra1}.
 \newpage
 % ======================= %
 
-\section{Lines in \rthree}
+\section{Lines in \texorpdfstring{\rthree}{R\textasciicircum 3}}
 A line in space is determined by a \textbf{point} $P_0(x_0, y_0, z_0)$
 and a \textbf{direction vector} $v = (v_1, v_2, v_3)$, as illustrated in Figure~\ref{fig:line}.
 
@@ -97,7 +97,7 @@ and a \textbf{direction vector} $v = (v_1, v_2, v_3)$, as illustrated in Figure~
 \subsection{Three equivalent forms}
 \subsubsection{Vector form}
 \[
-r_1 = r_0 + \lambda v, \quad \lambda \in \mathbb{R}
+r_1 = r_0 + \lambda v, \quad \lambda \in \R
 \]
 
 \subsubsection{Parametric form}
@@ -124,7 +124,7 @@ The representation is not unique — \textit{any} point on the line can serve as
 \newpage
 % ======================= %
 
-\section{Planes in \rthree}
+\section{Planes in \texorpdfstring{\rthree}{R\textasciicircum 3}}
 A plane is determined by a \textbf{point} $R_0(x_0, y_0, z_0)$ and a \textbf{normal vector} $n = (a, b, c)$ perpendicular to the plane.
 
 \subsection{Three equivalent forms}
@@ -150,7 +150,7 @@ ax + by + cz &= ax_0 + by_0 + cz_0 \\
 
 \subsubsection{Vector parametric description}
 \[
-r_0 + \lambda u + \mu v, \quad \lambda, \mu \in \mathbb{R}
+r_0 + \lambda u + \mu v, \quad \lambda, \mu \in \R
 \]
 where $u, v$ are two linearly independent vectors lying in the plane.
 
@@ -202,7 +202,7 @@ $ax + by + cz = d$ and solve for $\lambda$. Then substitute back to get the inte
 \begin{itemize}[label={$\rightarrow$}]
     \item If $\langle n, v \rangle \neq 0$: unique solution exists — the line meets the plane at exactly one point.
     \item If $\langle n, v \rangle = 0$ and the point $r_0$ does not satisfy the plane equation: no solution — the line is parallel to the plane.
-    \item If $\langle n, v \rangle = 0$ and $r_0$ lies on the plane: all $\lambda \in \mathbb{R}$ satisfy it — the line lies entirely in the plane.
+    \item If $\langle n, v \rangle = 0$ and $r_0$ lies on the plane: all $\lambda \in \R$ satisfy it — the line lies entirely in the plane.
 \end{itemize}
 
 \subsection{Two planes}
@@ -235,7 +235,7 @@ Let $R_1$ be the point, $\Pi$ a plane with normal $n$, and $R_0$ any point on $\
 \begin{example}
 Find the distance from the point $R_1 = (1, 2, 3)$ to the plane $2x + y - z = 4$.
 
-\noindent Taking $n = (2, 1, -1)$ and $R_0 = (2, 0, 0)$ on the plane, Equation~(\ref{eq:dist-pt-plane}) gives:
+\noindent Taking $n = (2, 1, -1)$ and $R_0 = (2, 0, 0)$ on the plane, Equation~\eqref{eq:dist-pt-plane} gives:
 \[
 \Delta = \frac{|\ip{R_1 - R_0}{n}|}{|n|}
        = \frac{|\ip{(-1,\, 2,\, 3)}{(2,\, 1,\, -1)}|}{\sqrt{4+1+1}}
@@ -260,7 +260,7 @@ Lines that are not parallel and do not intersect. Formula:
 \subsection{Line and parallel plane}
 
 First verify parallelism: $\langle n, v \rangle = 0$.
-Distance = distance from any point on the line to the plane (use Equation~(\ref{eq:dist-pt-plane})).
+Distance = distance from any point on the line to the plane (use Equation~\eqref{eq:dist-pt-plane}).
 
 \subsection{Two parallel planes}
 
@@ -341,7 +341,7 @@ The planes are orthogonal when $\phi = 90^\circ$, i.e.\ $\cos\phi = 0$, which oc
 \newpage
 % ======================= %
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \sloppy
 
 \bibitem{protter}
