@@ -1,15 +1,17 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper]{article}
 
-\usepackage[a4paper, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[left=2.5cm, right=2.5cm]{geometry}
+\usepackage[english]{babel}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{amsbsy}
 \usepackage{setspace}
 \usepackage[shortlabels]{enumitem}
-\usepackage{float}
-\usepackage[colorlinks,linkcolor=red,citecolor=green,urlcolor=blue,hypertexnames=true]{hyperref}
-\usepackage{graphicx}
 
 \setstretch{1.1}
-
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks,linkcolor=red,citecolor=green,urlcolor=blue,hypertexnames=true]{hyperref}
+\usepackage{graphicx}
 \title{}
 \author{Ivan Mikhailov}
 
@@ -18,9 +20,15 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
 
 \renewcommand{\qedsymbol}{$\spadesuit$}
 
@@ -126,6 +134,7 @@ The representation is not unique — \textit{any} point on the line can serve as
 
 \section{Planes in \texorpdfstring{\rthree}{R\textasciicircum 3}}
 A plane is determined by a \textbf{point} $R_0(x_0, y_0, z_0)$ and a \textbf{normal vector} $n = (a, b, c)$ perpendicular to the plane.
+$\langle u, v \rangle = \sum_{i=1}^{3} u_i v_i$ denotes the dot product of vectors $u$ and $v$.
 
 \subsection{Three equivalent forms}
 
@@ -236,13 +245,13 @@ Let $R_1$ be the point, $\Pi$ a plane with normal $n$, and $R_0$ any point on $\
 Find the distance from the point $R_1 = (1, 2, 3)$ to the plane $2x + y - z = 4$.
 
 \noindent Taking $n = (2, 1, -1)$ and $R_0 = (2, 0, 0)$ on the plane, Equation~\eqref{eq:dist-pt-plane} gives:
-\[
-\Delta = \frac{|\ip{R_1 - R_0}{n}|}{|n|}
-       = \frac{|\ip{(-1,\, 2,\, 3)}{(2,\, 1,\, -1)}|}{\sqrt{4+1+1}}
-       = \frac{|-2 + 2 - 3|}{\sqrt{6}}
-       = \frac{3}{\sqrt{6}}
-       = \frac{\sqrt{6}}{2}.
-\]
+\begin{align*}
+\Delta &= \frac{|\ip{R_1 - R_0}{n}|}{|n|} \\
+       &= \frac{|\ip{(-1,\, 2,\, 3)}{(2,\, 1,\, -1)}|}{\sqrt{4+1+1}} \\
+       &= \frac{|-2 + 2 - 3|}{\sqrt{6}} \\
+       &= \frac{3}{\sqrt{6}} \\
+       &= \frac{\sqrt{6}}{2}.
+\end{align*}
 \end{example}
 
 \subsection{Two parallel lines}
@@ -350,10 +359,9 @@ P.~M.~Protter and C.~B.~Morrey,
 2nd~ed., Addison-Wesley, Reading, MA, 1977.
 
 \bibitem{algebra1}
-\textit{Algebra I --- Lecture Notes}, version~3,
+\textit{Algebra I --- Lecture Notes},
 University of Primorska FAMNIT\@.
-Available at:\\
-\url{https://e.famnit.upr.si/pluginfile.php/747259/mod_resource/content/19/Algebra%201%20lecture%20notes_V3.pdf}
+Available at: \url{https://e.famnit.upr.si/pluginfile.php/747259/mod_resource/content/19/Algebra%201%20lecture%20notes_V3.pdf}
 
 \end{thebibliography}
 
